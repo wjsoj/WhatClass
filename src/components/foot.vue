@@ -1,0 +1,26 @@
+<script setup>
+import { onUpdated } from 'vue'
+import { NEllipsis } from 'naive-ui'
+let footer = document.querySelector('footer')
+onUpdated(() => {
+  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
+  if (document.body.clientHeight < window.innerHeight) {
+    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
+  }
+})
+</script>
+
+<template>
+<footer class="bg-slate-200 dark:bg-slate-700 px-6 py-4 fixed bottom-0 left-0 right-0 transition ease-in-out">
+  <div class="flex flex-row justify-center items-center">
+    <div class="flex flex-col justify-center items-start">
+      <p class="text-slate-900 dark:text-slate-100 text-sm">Copyright 2023 By <span class="text-gradient font-bold">WJS</span>.</p>
+      <p class="text-slate-900 dark:text-slate-100 text-sm ">
+        <n-ellipsis expand-trigger="click" line-clamp="1" :tooltip="true">
+          Made With Unbearable aversion to the Unacceptable Interactive Design level of Elective2008.
+        </n-ellipsis>
+      </p>
+    </div>
+  </div>
+</footer>
+</template>
