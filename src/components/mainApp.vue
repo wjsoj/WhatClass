@@ -49,8 +49,6 @@ function changeTheme(key) {
 function goGithub() {
   window.open('https://github.com')
 }
-
-
 </script>
 
 <template>
