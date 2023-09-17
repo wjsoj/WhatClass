@@ -56,9 +56,8 @@ function goGithub() {
   <h1 class=" text-gradient text-2xl font-semibold cursor-pointer" @click="router.push('/')">What Class</h1>
   <div class="flex flex-row">
     <n-dropdown trigger="click" :options="options" @select="changeTheme">
-      <SunRegular v-if="appTheme==='light'" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
-      <MoonRegular v-if="appTheme==='dark'" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
-      <TabletAlt v-if="appTheme==='system'" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
+      <MoonRegular v-if="isDark" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
+      <SunRegular v-else class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
     </n-dropdown>
     <Github class="w-6 h-6 mt-1 ml-4 text-slate-800 dark:text-slate-50" @click="goGithub"/>
   </div>

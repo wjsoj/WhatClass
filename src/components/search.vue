@@ -20,7 +20,7 @@ let loadingBar = useLoadingBar()
 let dialog = useDialog()
 let countResult = ref(0)
 let result = ref([])
-let query = new AV.Query('course')
+let query = null
 
 const inputInfo = [
   {
@@ -121,6 +121,7 @@ const options2 = [
 ]
 
 async function queryClass() {
+  query = new AV.Query('course')
   if (!classInfo.value.className && !classInfo.value.classTeacher && !classInfo.value.classPlace && !classInfo.value.classTime && !classInfo.value.classWeekDay && !classCategory.value && !classSchool.value) {
     message.warning('你是猴子派来捣乱的吗？')
     return
