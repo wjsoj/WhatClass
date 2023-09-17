@@ -54,6 +54,6 @@ course.time = timeArr.join('<br>')
     </h2>
   </div>
 
-  <p class="text-sky-800 dark:text-sky-200 my-1 self-end cursor-pointer" v-text="isOpen ? '- Hide' : '+ View More'" @click="isOpen=!isOpen"></p>
+  <p v-if="isHide" class="text-sky-800 dark:text-sky-200 my-1 self-end cursor-pointer" v-text="isOpen ? '- Hide' : '+ View More'" @click="isOpen=!isOpen"></p>
 </div>
 </template>
