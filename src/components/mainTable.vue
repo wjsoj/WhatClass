@@ -1,6 +1,6 @@
 <script setup>
 import { NInputNumber,NInput,NCheckbox,NSpin,useMessage,useLoadingBar,useDialog } from 'naive-ui'
-import { computed, ref, watch, onUpdated, onMounted } from 'vue'
+import { computed, ref, watch, onUpdated, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import AV from 'leancloud-storage'
 import courseDetail from './courseDetail.vue'
@@ -110,31 +110,6 @@ async function queryClass() {
   let query = new AV.Query('course')
   result.value = []
   // 把classWeekDay转成汉字
-  let weekDay = ''
-  switch (classWeekDay.value) {
-    case 1:
-      weekDay = '一'
-      break
-    case 2:
-      weekDay = '二'
-      break
-    case 3:
-      weekDay = '三'
-      break
-    case 4:
-      weekDay = '四'
-      break
-    case 5:
-      weekDay = '五'
-      break
-    case 6:
-      weekDay = '六'
-      break
-    case 7:
-      weekDay = '日'
-      break
-  }
-  // 如果其中一项为空
   if (classTime.value === null || classWeekDay.value === null || classPlace.value === null) {
     message.error('请填写所有信息')
     return
@@ -173,6 +148,11 @@ onUpdated(() => {
     footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
   }
 })
+
+onUnmounted(() => {
+  let footer = document.querySelector('footer')
+  footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
+})
 </script>
 
 <template>
@@ -183,7 +163,7 @@ onUpdated(() => {
     </div>
     <div class="flex flex-row justify-center items-center text-slate-900 dark:text-slate-100 text-lg my-2">
       <span>时间：</span>
-      <span class="flex-1"><n-input-number v-model:value="classTime" :min="1" :max="12" placeholder="1~12间的数字" /></span>
+      <span class="flex-1"><n-input-number v-model:value="classTime" :min="1" :max="12" placeholder="1~12间的数字，第几节课" /></span>
     </div>
     <div class="flex justify-center">
       <n-checkbox v-model:checked="isNow">使用当前时间</n-checkbox>

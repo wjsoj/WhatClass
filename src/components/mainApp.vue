@@ -2,11 +2,11 @@
 import { SunRegular,MoonRegular,TabletAlt,Github } from '@vicons/fa'
 import { useThemeStore } from '../stores/theme'
 import { storeToRefs } from 'pinia'
-import { NDropdown } from 'naive-ui'
-import mainTable from './mainTable.vue'
+import { NDropdown,NBackTop } from 'naive-ui'
+import { useRouter } from 'vue-router'
 import foot from './foot.vue'
 
-
+const router = useRouter()
 const { appTheme,isDark } = storeToRefs(useThemeStore())
 
 const options = [
@@ -47,13 +47,13 @@ function changeTheme(key) {
 }
 
 function goGithub() {
-  window.open('https://github.com')
+  window.open('https://github.com/wjsoj/WhatClass')
 }
 </script>
 
-<template>
-<header class=" backdrop-blur-sm flex flex-row justify-between px-6 py-4 bg-slate-200 dark:bg-slate-700 transition ease-in-out">
-  <h1 class=" text-gradient text-2xl font-semibold">What Class</h1>
+<template> 
+<header class="sticky top-0 backdrop-blur flex flex-row justify-between px-6 py-4 bg-slate-200 dark:bg-slate-700 bg-opacity-60 border-b border-b-slate-200 dark:border-b-slate-800 transition ease-in-out">
+  <h1 class=" text-gradient text-2xl font-semibold cursor-pointer" @click="router.push('/')">What Class</h1>
   <div class="flex flex-row">
     <n-dropdown trigger="click" :options="options" @select="changeTheme">
       <SunRegular v-if="appTheme==='light'" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
@@ -69,6 +69,8 @@ function goGithub() {
     <component :is="Component" />
   </transition>
 </router-view>
+
+<n-back-top :right="20" :bottom="30"/>
 
 <foot />
 

@@ -1,6 +1,14 @@
 <script setup>
-import { onUpdated } from 'vue'
+import { onMounted } from 'vue'
 import { NEllipsis } from 'naive-ui'
+
+onMounted(() => {
+  let footer = document.querySelector('footer')
+  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
+  if (document.body.clientHeight < window.innerHeight) {
+    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
+  }
+})
 </script>
 
 <template>

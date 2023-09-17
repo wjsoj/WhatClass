@@ -7,8 +7,8 @@ import App from './App.vue'
 import router from './router'
 
 AV.init({
-  appId: '4WV1Ync0DfajvkUqBMzgJJhx-MdYXbMMI',
-  appKey: 'qTM25GrNwHm5FQNABNfttPOC',
+  appId: import.meta.env.VITE_APP_ID,
+  appKey: import.meta.env.VITE_APP_KEY,
   serverURL: 'https://api2.wjsphy.top',
 })
 
