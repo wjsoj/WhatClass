@@ -231,7 +231,7 @@ function handleScoll() {
   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
   let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
-  if (scrollTop + clientHeight >= scrollHeight - 1 && countResult.value > 100) {
+  if (scrollTop + clientHeight >= scrollHeight - 30 && countResult.value > 100) {
     continueQuery()
   }
 }
