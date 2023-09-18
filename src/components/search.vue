@@ -226,19 +226,6 @@ async function continueQuery() {
   })
 }
 
-const handleScroll = () => {
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-  let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
-  let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
-  if (scrollTop + clientHeight >= scrollHeight - 20 && !isLoading.value && countResult.value > 100) {
-    continueQuery()
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, true)
-})
-
 onUpdated(() => {
   let footer = document.querySelector('footer')
   footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
@@ -250,7 +237,6 @@ onUpdated(() => {
 onBeforeUnmount(() => {
   let footer = document.querySelector('footer')
   footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 <template>
@@ -286,6 +272,12 @@ onBeforeUnmount(() => {
     </div>
     
     <course-detail :course="item" v-for="item in result" :key="item.objectId" :is-hide="countResult > 50 ? true : false"/>
+    
+    <div class="flex flex-row justify-center items-center cursor-pointer mt-3" v-if="result.length < countResult && !isLoading" @click="continueQuery">
+      <span class="text-sky-700 dark:text-sky-300 text-base">
+        加载更多
+      </span>
+    </div>
   </div>
 
   <div class="flex flex-row justify-center items-center mt-6 mx-6" v-if="isLoading">
