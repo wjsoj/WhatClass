@@ -59,7 +59,7 @@ function goGithub() {
       <MoonRegular v-if="isDark" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
       <SunRegular v-else class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
     </n-dropdown>
-    <Github class="w-6 h-6 mt-1 ml-4 text-slate-800 dark:text-slate-50" @click="goGithub"/>
+    <Github class="w-6 h-6 mt-1 ml-4 text-slate-800 dark:text-slate-50 cursor-pointer" @click="goGithub"/>
   </div>
 </header>
 

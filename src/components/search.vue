@@ -15,6 +15,8 @@ let classInfo = ref({
 })
 let classCategory = ref(null)
 let classSchool = ref(null)
+let tskCategory = ref(null)
+let engCategory = ref(null)
 let message = useMessage()
 let loadingBar = useLoadingBar()
 let dialog = useDialog()
@@ -119,6 +121,21 @@ const options2 = [
   { label: '医学部', value: '医学部' },
   { label: '国际合作部', value: '国际合作部' },
 ]
+const tskoptions = [
+  { label: '全部', value: null },
+  { label: 'I.人类文明及其传统', value: 'I' },
+  { label: 'II.现代社会及其问题', value: 'II' },
+  { label: 'III.艺术与人文', value: 'III' },
+  { label: 'IV.数学、自然与技术', value: 'IV' },
+]
+const engoptions = [
+  { label: '全部', value: null },
+  { label: 'A', value: 'A' },
+  { label: 'B', value: 'B' },
+  { label: 'C', value: 'C' },
+  { label: 'C+', value: 'C+' },
+  { label: 'Y', value: 'Y' },
+]
 
 async function queryClass() {
   query = new AV.Query('course')
@@ -144,6 +161,16 @@ async function queryClass() {
   result.value = []
   if (classCategory.value) {
     query.equalTo('category', classCategory.value)
+    if (classCategory.value === '通识课') {
+      if (tskCategory.value) {
+        query.contains('type', tskCategory.value)
+      }
+    }
+    if (classCategory.value === '英语课') {
+      if (engCategory.value) {
+        query.equalTo('en_grade', engCategory.value)
+      }
+    }
   }
   if (classSchool.value) {
     query.equalTo('school', classSchool.value)
@@ -249,6 +276,20 @@ onBeforeUnmount(() => {
     <div class="w-full my-2">
       <n-select v-model:value="classCategory" :options="options" placeholder="课程类别（默认全部）">
       </n-select>
+    </div>
+    <div class="w-full my-2 flex flex-row justify-center items-center" v-if="classCategory==='通识课'">
+      <span class="text-slate-800 dark:text-slate-100 text-lg">通识课：</span>
+      <span class="flex-1">
+        <n-select v-model:value="tskCategory" :options="tskoptions" placeholder="通识课所属类别">
+        </n-select>
+      </span>
+    </div>
+    <div class="w-full my-2 flex flex-row justify-center items-center" v-if="classCategory==='英语课'">
+      <span class="text-slate-800 dark:text-slate-100 text-lg">英语课分级：</span>
+      <span class="flex-1">
+        <n-select v-model:value="engCategory" :options="engoptions" placeholder="大英分级">
+        </n-select>
+      </span>
     </div>
     <div class="w-full my-2">
       <n-select v-model:value="classSchool" :options="options2" placeholder="开课单位（默认全部）">

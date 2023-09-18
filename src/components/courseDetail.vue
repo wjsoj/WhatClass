@@ -40,7 +40,7 @@ course.time = timeArr.join('<br>')
       <div v-html="course.time"></div>
     </h2>
     <h2 class="text-slate-900 dark:text-slate-100 my-1" v-if="course.category">
-      所属类别：{{ course.category }}
+      所属类别：{{ course.category==='通识课' ? course.type : course.category }}
     </h2>
     <h2 class="text-slate-900 dark:text-slate-100 my-1" v-if="course.school">
       开设单位：{{ course.school }}
