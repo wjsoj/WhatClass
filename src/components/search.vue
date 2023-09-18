@@ -226,18 +226,17 @@ async function continueQuery() {
   })
 }
 
-// 如果页面滚动到底部，执行continueQuery函数，兼容移动端
-function handleScoll() {
+const handleScroll = () => {
   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
   let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
-  if (scrollTop + clientHeight >= scrollHeight && countResult.value > 100 && !isLoading.value) {
+  if (scrollTop + clientHeight >= scrollHeight - 20 && !isLoading.value && countResult.value > 100) {
     continueQuery()
   }
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScoll)
+  window.addEventListener('scroll', handleScroll)
 })
 
 onUpdated(() => {
@@ -251,7 +250,7 @@ onUpdated(() => {
 onBeforeUnmount(() => {
   let footer = document.querySelector('footer')
   footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-  window.removeEventListener('scroll', handleScoll)
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 <template>
@@ -279,13 +278,13 @@ onBeforeUnmount(() => {
   <div class="mt-3 text-sky-800 dark:text-sky-200 text-base cursor-pointer" v-text="isInputOpen ? '收起查询界面' : '展开查询界面'" @click="isInputOpen = !isInputOpen">
   </div>
   <div class="w-full h-px bg-slate-200 dark:bg-slate-700 my-4"></div>
-
+  
   <div class="flex flex-col justify-center items-center" v-if="result.length !== 0">
     <div class="flex flex-row justify-center items-center text-slate-900 dark:text-slate-100 text-base my-2">
       <span>查询结果：</span>
       <span class="flex-1">{{ countResult }}条</span>
     </div>
-
+    
     <course-detail :course="item" v-for="item in result" :key="item.objectId" :is-hide="countResult > 50 ? true : false"/>
   </div>
 
