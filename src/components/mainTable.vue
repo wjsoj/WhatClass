@@ -1,6 +1,6 @@
 <script setup>
 import { NInputNumber,NInput,NCheckbox,NSpin,useMessage,useLoadingBar,useDialog } from 'naive-ui'
-import { computed, ref, watch, onUpdated, onUnmounted, onMounted } from 'vue'
+import { computed, ref, watch, onUpdated, onBeforeUnmount, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import AV from 'leancloud-storage'
 import courseDetail from './courseDetail.vue'
@@ -141,14 +141,6 @@ async function queryClass() {
   })
 }
 
-onMounted(() => {
-  let footer = document.querySelector('footer')
-  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
-  if (document.body.clientHeight < window.innerHeight) {
-    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-  }
-})
-
 onUpdated(() => {
   let footer = document.querySelector('footer')
   footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
@@ -157,7 +149,7 @@ onUpdated(() => {
   }
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   let footer = document.querySelector('footer')
   footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
 })
