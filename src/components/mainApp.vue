@@ -69,7 +69,7 @@ function goGithub() {
   </transition>
 </router-view>
 
-<n-back-top :right="20" :bottom="30"/>
+<!-- <n-back-top :right="20" :bottom="30"/> -->
 
 <foot />
 
