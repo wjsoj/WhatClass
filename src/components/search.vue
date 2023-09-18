@@ -185,10 +185,11 @@ async function queryClass() {
     query.contains('time', classInfo.value.classPlace)
   }
   if (classInfo.value.classTime) {
+    let queryClassTime = classInfo.value.classTime.toString(16)
     if (classInfo.value.classWeekDay){
-      query.contains('stime', classInfo.value.classWeekDay+'@'+classInfo.value.classTime)
+      query.contains('stime', classInfo.value.classWeekDay+'@'+queryClassTime)
     } else {
-      query.contains('stime', '@'+classInfo.value.classTime)
+      query.contains('stime', '@'+queryClassTime)
     }
   } else {
     if (classInfo.value.classWeekDay){

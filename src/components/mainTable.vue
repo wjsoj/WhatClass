@@ -118,7 +118,9 @@ async function queryClass() {
   loadingBar.start()
 
   query.contains('time', classPlace.value)
-  query.contains('stime', classWeekDay.value+'@'+classTime.value)
+  let queryClassTime = classTime.value.toString(16)
+  console.log(queryClassTime)
+  query.contains('stime', classWeekDay.value+'@'+queryClassTime)
   await query.find().then((res) => {
     if (res.length === 0) {
       dialog.warning({
