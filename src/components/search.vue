@@ -196,6 +196,7 @@ async function queryClass() {
       query.contains('stime', classInfo.value.classWeekDay+'@')
     }
   }
+  query.ascending('name')
 
   await query.count().then((res) => {
     countResult.value = res
