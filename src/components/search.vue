@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onUpdated, onUnmounted } from 'vue'
+import { ref, onMounted, onUpdated, onUnmounted } from 'vue'
 import { NInput, NSelect, useDialog, useMessage, useLoadingBar, NSpin } from 'naive-ui'
 import AV from 'leancloud-storage'
 import courseDetail from './courseDetail.vue'
@@ -204,14 +204,14 @@ async function queryClass() {
   })
 }
 
-async function continueQuery() {
+function continueQuery() {
   if (result.value.length >= countResult.value) {
     message.info('已经没有更多了')
     return
   }
   loadingBar.start()
   isLoading.value = true
-  await query.skip(result.value.length).find().then((res) => {
+  query.skip(result.value.length).find().then((res) => {
     for (let i = 0; i < res.length; i++) {
       result.value.push(res[i].attributes)
     }
@@ -226,12 +226,24 @@ async function continueQuery() {
   })
 }
 
-// 如果页面滚动到底部，执行continueQuery函数
-window.onscroll = function () {
-  if (countResult.value > 100 && document.documentElement.scrollTop + window.innerHeight >= document.body.scrollHeight) {
+// 如果页面滚动到底部，执行continueQuery函数，兼容移动端
+function handleScoll() {
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+  let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+  if (scrollTop + clientHeight >= scrollHeight - 1 && countResult.value > 100) {
     continueQuery()
   }
 }
+
+onMounted(() => {
+  let footer = document.querySelector('footer')
+  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
+  if (document.body.clientHeight < window.innerHeight) {
+    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
+  }
+  window.addEventListener('scroll', handleScoll)
+})
 
 onUpdated(() => {
   let footer = document.querySelector('footer')
@@ -244,6 +256,7 @@ onUpdated(() => {
 onUnmounted(() => {
   let footer = document.querySelector('footer')
   footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
+  window.removeEventListener('scroll', handleScoll)
 })
 </script>
 <template>
