@@ -123,10 +123,10 @@ const options2 = [
 ]
 const tskoptions = [
   { label: '全部', value: null },
-  { label: 'I.人类文明及其传统', value: 'I' },
-  { label: 'II.现代社会及其问题', value: 'II' },
-  { label: 'III.艺术与人文', value: 'III' },
-  { label: 'IV.数学、自然与技术', value: 'IV' },
+  { label: 'I.人类文明及其传统', value: '课I)' },
+  { label: 'II.现代社会及其问题', value: '课II)' },
+  { label: 'III.艺术与人文', value: '课III)' },
+  { label: 'IV.数学、自然与技术', value: '课IV)' },
 ]
 const engoptions = [
   { label: '全部', value: null },
