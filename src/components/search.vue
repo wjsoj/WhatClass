@@ -263,6 +263,15 @@ onUpdated(() => {
   }
 })
 
+// 滚动到底部继续加载
+window.addEventListener('scroll', () => {
+  if (document.body.clientHeight < window.innerHeight) {
+    if (result.value.length < countResult.value && !isLoading.value) {
+      continueQuery()
+    }
+  }
+})
+
 onBeforeUnmount(() => {
   let footer = document.querySelector('footer')
   footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')

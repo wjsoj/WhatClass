@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.5.0",
     "leancloud-storage": "^4.15.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
