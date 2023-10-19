@@ -1,10 +1,9 @@
 <script setup>
-import { onMounted } from 'vue'
 import { NEllipsis } from 'naive-ui'
 </script>
 
 <template>
-<footer class="bg-slate-200 dark:bg-slate-700 px-6 py-4 fixed bottom-0 left-0 right-0 transition ease-in-out">
+<footer class="bg-slate-200 dark:bg-slate-700 px-6 py-4 transition ease-in-out">
   <div class="flex flex-row justify-center items-center">
     <div class="flex flex-col justify-center items-start">
       <p class="text-slate-900 dark:text-slate-100 text-sm">Copyright 2023 By <span class="text-gradient font-bold">WJS</span>.</p>

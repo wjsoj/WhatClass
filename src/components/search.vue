@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUpdated, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 import { NInput, NSelect, useDialog, useMessage, useLoadingBar, NSpin } from 'naive-ui'
 import AV from 'leancloud-storage'
 import courseDetail from './courseDetail.vue'
@@ -255,27 +255,14 @@ async function continueQuery() {
   })
 }
 
-onUpdated(() => {
-  let footer = document.querySelector('footer')
-  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
-  if (document.body.clientHeight < window.innerHeight) {
-    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-  }
-})
-
-// 滚动到底部继续加载
-window.addEventListener('scroll', () => {
-  if (document.body.clientHeight < window.innerHeight) {
-    if (result.value.length < countResult.value && !isLoading.value) {
-      continueQuery()
-    }
-  }
-})
-
-onBeforeUnmount(() => {
-  let footer = document.querySelector('footer')
-  footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-})
+// // 滚动到底部继续加载
+// window.addEventListener('scroll', () => {
+//   if (document.body.clientHeight < window.innerHeight) {
+//     if (result.value.length < countResult.value && !isLoading.value) {
+//       continueQuery()
+//     }
+//   }
+// })
 </script>
 <template>
 <div class="flex flex-col items-center mx-6 my-6">

@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from 'vue'
 import { useDark } from '@vueuse/core'
 import { NConfigProvider,darkTheme,NLoadingBarProvider,NMessageProvider,NDialogProvider } from 'naive-ui'
 import mainApp from './components/mainApp.vue'

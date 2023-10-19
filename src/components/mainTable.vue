@@ -142,19 +142,6 @@ async function queryClass() {
     isLoading.value = false
   })
 }
-
-onUpdated(() => {
-  let footer = document.querySelector('footer')
-  footer.classList.remove('fixed', 'bottom-0', 'left-0', 'right-0')
-  if (document.body.clientHeight < window.innerHeight) {
-    footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-  }
-})
-
-onBeforeUnmount(() => {
-  let footer = document.querySelector('footer')
-  footer.classList.add('fixed', 'bottom-0', 'left-0', 'right-0')
-})
 </script>
 
 <template>
