@@ -37,6 +37,6 @@ function goGithub() {
 
 <n-back-top :right="20" :bottom="30"/>
 
-<foot />
+<!-- <foot /> -->
 </div>
 </template>
