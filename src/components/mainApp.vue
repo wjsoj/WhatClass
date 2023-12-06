@@ -3,7 +3,7 @@ import { SunRegular,MoonRegular,Github } from '@vicons/fa'
 import { useDark,useToggle } from '@vueuse/core'
 import { NBackTop } from 'naive-ui'
 import { useRouter } from 'vue-router'
-import foot from './foot.vue'
+// import foot from './foot.vue'
 
 const router = useRouter()
 const isDark = useDark()

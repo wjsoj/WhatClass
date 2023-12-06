@@ -1,6 +1,6 @@
 <script setup>
 import { NInputNumber,NInput,NCheckbox,NSpin,useMessage,useLoadingBar,useDialog } from 'naive-ui'
-import { computed, ref, watch, onUpdated, onBeforeUnmount, onMounted } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import AV from 'leancloud-storage'
 import courseDetail from './courseDetail.vue'
