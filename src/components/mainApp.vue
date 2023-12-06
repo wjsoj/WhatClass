@@ -17,7 +17,7 @@ function goGithub() {
 <template> 
 <div class="flex flex-col min-h-screen">
 <header class="z-10 sticky top-0 backdrop-blur flex flex-row justify-between px-6 py-4 bg-slate-200 dark:bg-slate-700 bg-opacity-60 border-b border-b-slate-200 dark:border-b-slate-800 transition ease-in-out">
-  <h1 class=" text-gradient text-2xl font-semibold cursor-pointer" @click="router.push('/')">What Class</h1>
+  <h1 class=" bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-pink-700 dark:from-amber-300 dark:to-teal-200 text-2xl font-semibold cursor-pointer" @click="router.push('/')">What Class</h1>
   <div class="flex flex-row">
     <div @click="toggleDark()">
       <MoonRegular v-if="isDark" class="w-6 h-6 mt-1 text-slate-800 dark:text-slate-50" />
