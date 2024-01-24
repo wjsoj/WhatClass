@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
@@ -20,21 +21,17 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "antd": "^5.13.2",
-    "bufferutil": "^4.0.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "formidable": "^3.5.1",
     "gsap": "^3.12.4",
     "lucide-react": "^0.311.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
-    "react": "^18",
+    "react": "^18.2.0",
     "react-dom": "^18",
     "react-infinite-scroll-component": "^6.1.0",
-    "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",
-    "tailwindcss-animate": "^1.0.7",
-    "utf-8-validate": "^6.0.3"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
