@@ -41,7 +41,7 @@ export default function Navv(){
     <nav className=
       "flex grow flex-row w-full z-10 justify-center bg-slate-100/45 dark:bg-slate-900/20 backdrop-filter backdrop-blur-lg rounded-full mx-5 px-2 py-2 relative z-1 shadow-md shadow-slate-300 dark:shadow-slate-700/60 border-1 border-slate-800 dark:border-slate-200">
       {links.map(({ href, label }) => (
-        <Link href={href} key={label} className={clsx(
+        <Link href={href} key={label} replace className={clsx(
           pathname === href && "bg-white/60 dark:bg-slate-400/20 md:bg-transparent md:dark:bg-transparent shadow-xl",
           "px-2 py-2 rounded-full basis-1/4 hover:scale-95 nav-link transition-all md:duration-1000 duration-300 ease-in-out"
         )}>

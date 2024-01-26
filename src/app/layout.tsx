@@ -41,7 +41,7 @@ export default function RootLayout({
         </ThemeProvider>
         </AntdRegistry>
       </body>
-      <Script defer src="https://monitor.wjsphy.top/script.js" data-website-id="507d6f6c-ee34-4168-909a-e878b60438e4" data-do-not-track="true"></Script>
+      <Script defer src="https://monitor.wjsphy.top/script.js" data-website-id="d28f9b38-7464-4f2d-b66c-dbef389d728c" data-do-not-track="true"></Script>
     </html>
   )
 }
