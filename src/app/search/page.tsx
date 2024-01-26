@@ -1,6 +1,6 @@
 'use client'
 
-import {options,options2,tskoptions,engoptions} from './options'
+import {options,options2,tskoptions,engoptions} from '../options'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -74,7 +74,7 @@ export default function Search(){
     setHasMore(true)
 
     setLoading(true)
-    const res = await fetch('/api/search',{
+    const res = await fetch('/api/class/search',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -90,7 +90,7 @@ export default function Search(){
   }
 
   async function fetchData(){
-    const res = await fetch('/api/search',{
+    const res = await fetch('/api/class/search',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'

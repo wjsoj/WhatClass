@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "pm2start": "pm2 start npm --name whatclass -- run start"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
@@ -26,6 +26,7 @@
     "gsap": "^3.12.4",
     "lucide-react": "^0.311.0",
     "next": "14.0.4",
+    "next-auth": "^5.0.0-beta.5",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18",

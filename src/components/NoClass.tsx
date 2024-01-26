@@ -8,6 +8,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Button } from "./ui/button"
 import { Loader2 } from "lucide-react"
 import { Input } from "./ui/input"
@@ -16,6 +25,7 @@ import { useFormStatus,useFormState } from "react-dom"
 import { createClass } from "@/lib/action"
 import { toast } from "./ui/use-toast"
 import { useEffect } from "react"
+import { options,options2 } from "@/app/options"
 
 const initState = {
   message: "",
@@ -49,7 +59,28 @@ function Form() {
   }, [state.message])
   return (
     <form action={formAction}>
-      <div className="grid gap-4 py-4">
+      <div className="grid gap-2 py-4">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="username" className="text-right">
+            学号
+          </Label>
+          <Input
+            name="username"
+            placeholder="测试用"
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="username" className="text-right">
+            密码
+          </Label>
+          <Input
+            name="password"
+            placeholder="测试用"
+            className="col-span-3"
+            type="password"
+          />
+        </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="name" className="text-right">
             课程名称*
@@ -62,7 +93,7 @@ function Form() {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
+          <Label htmlFor="time" className="text-right">
             时间地点*
           </Label>
           <Input
@@ -73,7 +104,7 @@ function Form() {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
+          <Label htmlFor="teacher" className="text-right">
             主讲教师*
           </Label>
           <Input
@@ -82,6 +113,46 @@ function Form() {
             defaultValue="赵克常"
             className="col-span-3"
           />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label className="text-right">
+            开课单位
+          </Label>
+          <Select name="school"
+          >
+            <SelectTrigger className='col-span-3'>
+              <SelectValue placeholder="选择开课单位（默认全部）"/>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {options2.map((option) => (
+                  <SelectItem key={option.value} value={option.value||'all'}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label className="text-right">
+            课程类别
+          </Label>
+          <Select name="category"
+          >
+            <SelectTrigger className='col-span-3'>
+              <SelectValue placeholder="选择课程类别（默认全部）"/>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {options.map((option) => (
+                  <SelectItem key={option.value} value={option.value||'all'}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </div>
       <DialogFooter>
