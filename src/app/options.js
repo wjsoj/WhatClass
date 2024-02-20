@@ -83,5 +83,18 @@ const engoptions = [
   { label: 'C+', value: 'C+级' },
   { label: 'Y', value: 'Y级' },
 ]
+const options3 = [
+  { label: '全部', value: '' },
+  { label: '专业课', value: '专业课' },
+  { label: '政治课', value: '政治课'},
+  { label: '公选课', value: '公选课' },
+  { label: '通识课I', value: '通识课(通识课I)' },
+  { label: '通识课II', value: '通识课(通识课II)' },
+  { label: '通识课III', value: '通识课(通识课III)' },
+  { label: '通识课IV', value: '通识课(通识课IV)' },
+  { label: '体育课', value: '体育课' },
+  { label: '英语课', value: '英语课' },
+  { label: '计算机课程', value: '计算机课程' },
+]
 
-export {options,options2,tskoptions,engoptions}
+export {options,options2,options3,tskoptions,engoptions}

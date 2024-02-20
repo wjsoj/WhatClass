@@ -8,12 +8,10 @@ export default async function Dashboard(){
     // 使用时间戳
     startAt: Date.now() - 1000 * 60 * 60 * 24,
     endAt: Date.now(),
-    // url: '/'
   }).then(res => res.data)
   const monthVisit = await client.getWebsiteStats(siteID,{
     startAt: Date.now() - 1000 * 60 * 60 * 24 * 30,
     endAt: Date.now(),
-    // url: '/'
   }).then(res => res.data)
 
   return (

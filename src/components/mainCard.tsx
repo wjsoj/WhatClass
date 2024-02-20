@@ -25,7 +25,10 @@ export default function MainCard() {
   let [classList, setClassList] = useState([]) 
   let [loading, setLoading] = useState(false)
   let [isTrigger, setTrigger] = useState(false)
-  const nowWeek = new Date().getDay().toString();
+  let nowWeek = new Date().getDay().toString();
+  if (nowWeek === "0") {
+    nowWeek = "7";
+  }
   let [week, setWeek] = useState(nowWeek);
   let [isChecked, setChecked ] = useState(true);
   const changeWeek=
@@ -74,23 +77,23 @@ export default function MainCard() {
     } else if (hour === 17) {
       return "9"
     } else if (hour === 18) {
-      return "10"
+      return "a"
     } else if (hour === 19) {
       if (minute < 30) {
-        return "10"
+        return "a"
       } else {
-        return "11"
+        return "b"
       }
     } else if (hour === 20) {
       if (minute < 30) {
-        return "11"
+        return "b"
       } else {
-        return "12"
+        return "c"
       }
     } else if (hour === 21) {
-      return "12"
+      return "c"
     }
-    return "12";
+    return "c";
   }
   let [classNum, setClassNum] = useState(nowClass())
   let [classroom, setClassroom] = useState("")
@@ -174,7 +177,7 @@ export default function MainCard() {
                 <SelectItem value="4">四</SelectItem>
                 <SelectItem value="5">五</SelectItem>
                 <SelectItem value="6">六</SelectItem>
-                <SelectItem value="0">日</SelectItem>
+                <SelectItem value="7">日</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -203,9 +206,9 @@ export default function MainCard() {
               </SelectGroup>
               <SelectGroup>
                 <SelectLabel>晚上</SelectLabel>
-                <SelectItem value="10">10 <span className="text-[12px] text-slate-600 dark:text-slate-400">(18:40-19:30)</span></SelectItem>
-                <SelectItem value="11">11 <span className="text-[12px] text-slate-600 dark:text-slate-400">(19:40-20:30)</span></SelectItem>
-                <SelectItem value="12">12 <span className="text-[12px] text-slate-600 dark:text-slate-400">(20:40-21:30)</span></SelectItem>
+                <SelectItem value="a">10 <span className="text-[12px] text-slate-600 dark:text-slate-400">(18:40-19:30)</span></SelectItem>
+                <SelectItem value="b">11 <span className="text-[12px] text-slate-600 dark:text-slate-400">(19:40-20:30)</span></SelectItem>
+                <SelectItem value="c">12 <span className="text-[12px] text-slate-600 dark:text-slate-400">(20:40-21:30)</span></SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -224,7 +227,7 @@ export default function MainCard() {
         onChange={e=>setClassroom(e.target.value)}
         onKeyDown={handleKeyDown}
         className="shadow-inner rounded-md"
-        placeholder="教室名称，格式与选课网一致"
+        placeholder="教室名称，如：理教207、一教101"
       />
       
       {loading ? <Button className="mt-4 mx-10 rounded-lg shadow-lg transition-all" variant="default" disabled><Loader2 className="mr-2 h-4 w-4 animate-spin" />查询中...</Button>:<Button className="mt-4 mx-10 rounded-lg shadow-lg transition-all" variant="default" onClick={fetchClass}>查询</Button>}

@@ -33,7 +33,7 @@ export default function RootLayout({
           <NavBar />
           <div className="z-[-10] absolute top-0 left-0 w-full h-full bg-gradient-to-bl dark:bg-gradient-to-b from-slate-100 dark:from-indigo-950 to-sky-100 dark:to-slate-900 blur-xl" />
           <div className="absolute z-[-5] top-0 right-0 w-[300px] md:w-[500px] md:h-[400px] h-[360px] bg-gradient-to-bl from-pink-200 to-slate-100 dark:from-violet-800 dark:to-slate-900 blur-3xl rounded-bl-full"></div>
-          <main className='grow flex flex-col'>
+          <main className='grow flex flex-col md:max-w-screen-sm md:mx-auto'>
             {children}
           </main>
           <Toaster />

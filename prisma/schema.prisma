@@ -15,7 +15,7 @@ model course {
   name String  //名称
   category String //类别
   type String //类型，通选课需要
-  credit String  //学分
+  credit String?  //学分
   major String?  //所属专业
   school String?  //开课单位
   teacher String?  //教师

@@ -2,7 +2,7 @@
 export default function ClassRoom({classInfo}: {classInfo: any}) {
   if (!classInfo.rows) return (<p>ERROR!</p>)
   return (
-    <div className="overflow-x-auto w-screen px-2">
+    <div className="overflow-x-auto w-screen md:max-w-screen-sm px-2">
       <table className="table-fixed rounded-md bg-slate-200 dark:bg-slate-700 text-sm mx-auto w-full">
         <thead className="bg-pink-50/30 dark:bg-slate-700">
           <tr>

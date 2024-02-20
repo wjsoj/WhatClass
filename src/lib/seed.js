@@ -22,7 +22,7 @@ async function main() {
   }
   const fs = require("fs");
   const path = require("path");
-  const filePath = path.resolve(__dirname, "./course2.json");
+  const filePath = path.resolve(__dirname, "./course.json");
   const course = JSON.parse(fs.readFileSync(filePath, "utf-8"));
   // 遍历，每100个一组
   for (let i = 0; i < course.length; i += 100) {

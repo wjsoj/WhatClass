@@ -132,7 +132,7 @@ export default function Search(){
                 <SelectItem value="4">四</SelectItem>
                 <SelectItem value="5">五</SelectItem>
                 <SelectItem value="6">六</SelectItem>
-                <SelectItem value="0">日</SelectItem>
+                <SelectItem value="7">日</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

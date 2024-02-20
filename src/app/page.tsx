@@ -21,11 +21,11 @@ export default function Home() {
     );
   });
   return (
-    <div className='flex flex-col xl:flex-row justify-center items-center px-6 py-10 opacity-0' id='part1'>
+    <div className='flex flex-col justify-center items-center px-6 py-10 opacity-0' id='part1'>
       <div id='hero'>
         <div className='rounded-full bg-blue-200/40 dark:bg-sky-900/60 backdrop-blur-lg px-4 py-1 mb-4 ml-2 md:ml-0 self-start text-sky-800 dark:text-slate-300 text-sm font-semibold md:self-center'>
           <Star className='inline-block mr-1 w-4 h-4 mb-0.5' />
-          每学期收录3000＋课程信息
+          每学期收录约3000门课程信息
         </div>
         <h1 className='font-bold text-4xl leading-[2.8rem] text-slate-600 dark:text-slate-200 md:text-center'>
           更便捷的课程查询,<br />

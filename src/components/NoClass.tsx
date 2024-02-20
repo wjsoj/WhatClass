@@ -25,7 +25,7 @@ import { useFormStatus,useFormState } from "react-dom"
 import { createClass } from "@/lib/action"
 import { toast } from "./ui/use-toast"
 import { useEffect } from "react"
-import { options,options2 } from "@/app/options"
+import { options3,options2 } from "@/app/options"
 
 const initState = {
   message: "",
@@ -60,7 +60,7 @@ function Form() {
   return (
     <form action={formAction}>
       <div className="grid gap-2 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
+        {/* <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="username" className="text-right">
             学号
           </Label>
@@ -80,7 +80,7 @@ function Form() {
             className="col-span-3"
             type="password"
           />
-        </div>
+        </div> */}
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="name" className="text-right">
             课程名称*
@@ -99,7 +99,7 @@ function Form() {
           <Input
             name="time"
             required
-            defaultValue="每周周二10~11节 二教304"
+            defaultValue="每周周五10~11节 二教101"
             className="col-span-3"
           />
         </div>
@@ -115,13 +115,23 @@ function Form() {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="note" className="text-right">
+            备注
+          </Label>
+          <Input
+            name="note"
+            placeholder="备注"
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
           <Label className="text-right">
             开课单位
           </Label>
           <Select name="school"
           >
             <SelectTrigger className='col-span-3'>
-              <SelectValue placeholder="选择开课单位（默认全部）"/>
+              <SelectValue placeholder="选择开课单位"/>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -141,11 +151,11 @@ function Form() {
           <Select name="category"
           >
             <SelectTrigger className='col-span-3'>
-              <SelectValue placeholder="选择课程类别（默认全部）"/>
+              <SelectValue placeholder="选择课程类别"/>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {options.map((option) => (
+                {options3.map((option) => (
                   <SelectItem key={option.value} value={option.value||'all'}>
                     {option.label}
                   </SelectItem>

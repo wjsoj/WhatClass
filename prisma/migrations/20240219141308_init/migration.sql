@@ -4,7 +4,7 @@ CREATE TABLE "course" (
     "name" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "credit" TEXT NOT NULL,
+    "credit" TEXT,
     "major" TEXT,
     "school" TEXT,
     "teacher" TEXT,
