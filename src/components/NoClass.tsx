@@ -25,7 +25,7 @@ import { useFormStatus,useFormState } from "react-dom"
 import { createClass } from "@/lib/action"
 import { toast } from "./ui/use-toast"
 import { useEffect } from "react"
-import { options3,options2 } from "@/app/options"
+import { options3,options2 } from "@/components/options"
 
 const initState = {
   message: "",

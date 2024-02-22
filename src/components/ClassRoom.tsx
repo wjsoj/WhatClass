@@ -1,8 +1,14 @@
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import RoomInfo from "./RoomInfo"
 
-export default function ClassRoom({classInfo}: {classInfo: any}) {
+export default function ClassRoom({classInfo,classroom,classtime}: {classInfo: any,classroom: string,classtime: string}) {
   if (!classInfo.rows) return (<p>ERROR!</p>)
   return (
-    <div className="overflow-x-auto w-screen md:max-w-screen-sm px-2">
+    <div className="overflow-x-auto w-full px-2">
       <table className="table-fixed rounded-md bg-slate-200 dark:bg-slate-700 text-sm mx-auto w-full">
         <thead className="bg-pink-50/30 dark:bg-slate-700">
           <tr>
@@ -20,7 +26,16 @@ export default function ClassRoom({classInfo}: {classInfo: any}) {
               <td colSpan={2} className="border py-3 text-center">{item.room}</td>
               <td colSpan={2} className="border py-3 text-center">{item.cap}</td>
               {Object.keys(item).filter((key: string) => (key[0] === "c" && key!='cap')).map((key: string, index: number) => (
-                <td key={index} className={`border py-2 ${item[key]==='' ? "bg-green-400 dark:bg-green-700" : "bg-slate-100 dark:bg-slate-800"}`}>{item[key]}</td>
+                <td key={index} className={`relative border py-2 ${item[key]==='' ? "bg-green-400 dark:bg-green-700" : "bg-slate-100 dark:bg-slate-700"}`}>
+                {item[key] !=='' && <Popover >
+                  <PopoverTrigger>
+                    <div className="absolute top-0 w-full h-full opacity-0 z-10"></div>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <RoomInfo classroom={classroom} name={item.room} time={classtime} index={index}/>
+                  </PopoverContent>
+                </Popover>}
+                </td>
               ))}
             </tr>
           ))}

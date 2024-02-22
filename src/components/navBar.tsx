@@ -7,16 +7,16 @@ import { Button } from "./ui/button"
 export default function NavBar() {
   return (
     <>
-      <div className="flex flex-row justify-between items-center py-5 px-4 md:sticky md:top-0 md:z-10">
-        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-tr from-violet-600 to-pink-600 dark:from-amber-300 dark:to-teal-200 ml-1 dark:text-shadow-dark">
+      <div className="flex flex-row justify-between items-center py-5 px-4 lg:sticky lg:top-0 lg:z-10 lg:grid lg:grid-cols-4 lg:justify-items-stretch w-full">
+        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-tr from-violet-600 to-pink-600 dark:from-amber-300 dark:to-teal-200 ml-1 lg:ml-1 dark:text-shadow-dark lg:justify-self-start">
           WhatClass
         </h1>
 
-        <div className="hidden md:flex grow max-w-[600px]">
+        <div className="hidden lg:grid lg:col-span-2">
           <Navv />
         </div>
 
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center lg:justify-self-end">
           <ModeToggle />
           <Button className="ml-2 md:box-shadow dark:shadow-xl" variant="outline" size="icon">
             <a href="http://github.com/wjsoj/whatclass" target="_blank" rel="noopener noreferrer">
@@ -26,7 +26,7 @@ export default function NavBar() {
           </Button>
         </div>
       </div>
-      <div className="flex md:hidden sticky top-2 z-10">
+      <div className="flex lg:hidden sticky top-2 z-10">
         <Navv />
       </div>
     </>

@@ -117,6 +117,10 @@ nav {
     -2px -2px 10px rgba(222,222,222,1);
     transition: all .5s ease-in-out;
   }
+  .mock-shadow {
+    box-shadow: 2px 2px 10px rgba(22, 22, 22, 0.6),
+    -2px -2px 10px rgba(222,222,222,0.5);
+  }
   .box-shadow:hover {
     box-shadow: 0px 0px 10px rgba(22, 22, 22,0.4),
     0px 0px 10px rgba(222,222,222,0.6),
