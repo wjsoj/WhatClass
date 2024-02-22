@@ -14,7 +14,16 @@ export default function RoomInfo({classroom,name,time,index}:{classroom: string,
   if (week==0) {
     week = 7
   }
-  let timec = index + 1
+  let timec = String(index + 1)
+  if (timec=="10") {
+    timec = "a"
+  }
+  if (timec=="11") {
+    timec = "b"
+  }
+  if (timec=="12") {
+    timec = "c"
+  }
 
   let [classInfo, setClassInfo] = useState({} as any)
 
@@ -29,16 +38,17 @@ export default function RoomInfo({classroom,name,time,index}:{classroom: string,
   // 确保只在第一次渲染时调用
   useEffect(() => {
     fetchCourse()
+    console.log(classroom+name,week,timec,time)
   }, [])
   return (
     <div>
       {
         classInfo.name === "无课" ? <div className="text-sm">
-            <p>{classroom + name}  第{timec}节</p>
+            <p>{classroom + name}  第{index + 1}节</p>
             <p>未查询到课程信息</p>
           </div> : (
           <div className="text-sm">
-            <p>{classroom + name}  第{timec}节</p>
+            <p>{classroom + name}  第{index + 1}节</p>
             <h2 className="font-bold text-base">{classInfo.name}</h2>
             <p>{classInfo.teacher}</p>
           </div>
