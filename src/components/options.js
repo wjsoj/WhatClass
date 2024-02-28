@@ -97,4 +97,110 @@ const options3 = [
   { label: '计算机课程', value: '计算机课程' },
 ]
 
-export {options,options2,options3,tskoptions,engoptions}
+const nowClass = ()=> {
+  let hour = new Date().getHours();
+  let minute = new Date().getMinutes();
+  if (hour < 8) {
+    return "1"
+  } else if (hour === 8) {
+    if (minute < 50) {
+      return "1"
+    } else {
+      return "2"
+    }
+  } else if (hour === 9) {
+    if (minute < 50) {
+      return "2"
+    } else {
+      return "3"
+    }
+  } else if (hour === 10) {
+    return "3"
+  } else if (hour === 11) {
+    return "4"
+  } else if (hour === 12) {
+    return "5"
+  } else if (hour === 13) {
+    if (minute < 50) {
+      return "5"
+    } else {
+      return "6"
+    }
+  } else if (hour === 14) {
+    if (minute < 50) {
+      return "6"
+    } else {
+      return "7"
+    }
+  } else if (hour === 15) {
+    return "7"
+  } else if (hour === 16) {
+    return "8"
+  } else if (hour === 17) {
+    return "9"
+  } else if (hour === 18) {
+    return "a"
+  } else if (hour === 19) {
+    if (minute < 30) {
+      return "a"
+    } else {
+      return "b"
+    }
+  } else if (hour === 20) {
+    if (minute < 30) {
+      return "b"
+    } else {
+      return "c"
+    }
+  } else if (hour === 21) {
+    return "c"
+  }
+  return "c";
+}
+
+const nowEmptyClass = ()=> {
+  let hour = new Date().getHours();
+  let minute = new Date().getMinutes();
+  if (hour <= 8) {
+    return [["1","2"],["3","4"]]
+  } else if (hour === 9) {
+    if (minute < 50) {
+      return [["1","2"],["3","4"]]
+    } else {
+      return [["3","4"],["5","6"]]
+    }
+  } else if (hour === 10 || hour === 11) {
+    return [["3","4"],["5","6"]]
+  } else if (hour === 12 || hour === 13) {
+    return [["5","6"],["7","8","9"]]
+  } else if (hour === 14) {
+    if (minute < 50) {
+      return [["5","6"],["7","8","9"]]
+    } else {
+      return [["7","8","9"],["10","11","12"]]
+    }
+  } else if (hour === 15 || hour === 16 || hour === 17) {
+    return [["7","8","9"],["10","11","12"]]
+  } else {
+    return [["10","11","12"]]
+  }
+}
+
+const floor = {
+  "一教": [1,3],
+  "二教": [1,5],
+  "三教": [1,5],
+  "四教": [3,5],
+  "理教": [1,4],
+  "文史": [1,3],
+  "地学": [1,3],
+  "哲学": [1,2],
+  "政管": [4,5],
+  "国关": [1,3],
+}
+// f**k typescript
+const getFloor = (name) => {
+  return floor[name]
+}
+
+export {options,options2,options3,tskoptions,engoptions,getFloor,nowClass,nowEmptyClass}

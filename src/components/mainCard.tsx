@@ -12,13 +12,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select"
-import { useState,useEffect,Suspense } from "react";
+import { useState,useEffect } from "react";
 import ClassCard from "./ClassCard";
 import { useToast } from "@/components/ui/use-toast"
 import NoClass from "./NoClass";
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-
+import { nowClass } from "./options";
 
 export default function MainCard() {
   const {toast} = useToast()
@@ -35,66 +35,7 @@ export default function MainCard() {
     (value: string) => {
       setWeek(value)
     }
-  const nowClass = ()=> {
-    let hour = new Date().getHours();
-    let minute = new Date().getMinutes();
-    if (hour < 8) {
-      return "1"
-    } else if (hour === 8) {
-      if (minute < 50) {
-        return "1"
-      } else {
-        return "2"
-      }
-    } else if (hour === 9) {
-      if (minute < 50) {
-        return "2"
-      } else {
-        return "3"
-      }
-    } else if (hour === 10) {
-      return "3"
-    } else if (hour === 11) {
-      return "4"
-    } else if (hour === 12) {
-      return "5"
-    } else if (hour === 13) {
-      if (minute < 50) {
-        return "5"
-      } else {
-        return "6"
-      }
-    } else if (hour === 14) {
-      if (minute < 50) {
-        return "6"
-      } else {
-        return "7"
-      }
-    } else if (hour === 15) {
-      return "7"
-    } else if (hour === 16) {
-      return "8"
-    } else if (hour === 17) {
-      return "9"
-    } else if (hour === 18) {
-      return "a"
-    } else if (hour === 19) {
-      if (minute < 30) {
-        return "a"
-      } else {
-        return "b"
-      }
-    } else if (hour === 20) {
-      if (minute < 30) {
-        return "b"
-      } else {
-        return "c"
-      }
-    } else if (hour === 21) {
-      return "c"
-    }
-    return "c";
-  }
+  
   let [classNum, setClassNum] = useState(nowClass())
   let [classroom, setClassroom] = useState("")
   const changeClass=
