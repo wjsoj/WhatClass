@@ -1,10 +1,11 @@
+'use client'
 import { nowEmptyClass } from "./options"
 import { Badge } from "./ui/badge"
 
 export default function EmptyClassroom({classroom,floor,loading}:{classroom: Array<Object>,floor: Array<number>,loading : boolean}) {
   // 根据楼层和时间筛选教室
   const filterRoom = (classroom: Array<Object>, nowfloor: number, timeRange: Array<string>) => {
-    return classroom.filter((item: any) => item.room.startsWith(nowfloor) || item.room.startsWith("C"+nowfloor.toString())).filter((item: any) => {
+    return (classroom || []).filter((item: any) => item.room.startsWith(nowfloor) || item.room.startsWith("C"+nowfloor.toString())).filter((item: any) => {
     // 对每个教室的课程进行筛选，寻找对应 "c"+timeRange 每一项字段均为""的教室
       return timeRange.every((time: string) => item["c"+time] === "")
     }).map((item: any) => item.room)
