@@ -22,7 +22,7 @@ export default function RoomPage() {
   let [classTime, setClassTime] = useState("今天")
   let [classInfo, setClassInfo] = useState({} as any)
   let [Loading, setLoading] = useState(true)
-  let [isEmptyView, setIsEmptyView] = useState("false")
+  let [isEmptyView, setIsEmptyView] = useState("true")
 
   async function fetchClassroom(classroom: string,classTime: string) {
     setLoading(true)
