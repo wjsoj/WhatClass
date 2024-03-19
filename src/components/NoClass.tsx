@@ -110,7 +110,6 @@ function Form() {
           <Input
             name="teacher"
             required
-            defaultValue="赵克常"
             className="col-span-3"
           />
         </div>
