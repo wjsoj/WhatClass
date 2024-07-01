@@ -92,7 +92,8 @@ export default function Search({ isLargeScreen }: { isLargeScreen: boolean }){
   async function getRandom(){
     setLoading(true)
     setHasMore(false)
-    const res = await fetch('/api/class/random')
+    let randomInt = (Math.floor(Math.random() * 177) + 1).toString()
+    const res = await fetch(`/api/class/random?id={randomInt}`)
     await res.json().then((data)=>{
       setClassList([data])
       setLoading(false)
