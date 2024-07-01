@@ -29,14 +29,36 @@ export default function RoomPage() {
     return classInfo
   }
 
+  // directly call api from client side, CORS issue
+  // async function fetchClassroom(classroom: string,classTime: string) {
+  //   setLoading(true)
+  //   const reqForm = new FormData();
+  //   reqForm.append('buildingName', classroom);
+  //   reqForm.append('time', classTime);
+  //   const classInfo = await fetch('https://portal.pku.edu.cn/portal2017/publicsearch/classroom/retrClassRoomFree.do',{
+  //     method: 'POST',
+  //     headers: {
+  //       'Origin': 'https://portal.pku.edu.cn',
+  //       'Sec-Fetch-Site': 'same-origin',
+  //       'Sec-Fetch-Mode': 'cors',
+  //       'Sec-Fetch-Dest': 'empty',
+  //       'Referer': 'https://portal.pku.edu.cn/portal2017/',
+  //       'Access-Control-Allow-Origin': '*',
+  //     },
+  //     body: reqForm,
+  //   }).then(res => res.json())
+  //   setLoading(false)
+  //   return classInfo
+  // }
+
   useEffect(() => {
-    fetchClassroom(classroom,classTime).then(res => setClassInfo(res))
-  }, [classroom,classTime])
-  useEffect(() => {
-    if(isEmptyView===true) {
+    if (isEmptyView && classTime !== "今天") {
       setClassTime("今天")
     }
   }, [isEmptyView])
+  useEffect(() => {
+    fetchClassroom(classroom,classTime).then(res => setClassInfo(res))
+  }, [classroom,classTime])
 
   function AllClassroom() {
     return (

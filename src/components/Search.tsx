@@ -70,6 +70,7 @@ export default function Search({ isLargeScreen }: { isLargeScreen: boolean }){
     }
     if (inputValue.tsk === 'all') inputValue.tsk = ''
     if (inputValue.engrade === 'all') inputValue.engrade = ''
+
     // init
     setHasMore(true)
 
@@ -84,6 +85,16 @@ export default function Search({ isLargeScreen }: { isLargeScreen: boolean }){
     await res.json().then((data)=>{
       if (data.length < listSize) setHasMore(false)
       setClassList(data)
+      setLoading(false)
+      setTrigger(true)
+    })
+  }
+  async function getRandom(){
+    setLoading(true)
+    setHasMore(false)
+    const res = await fetch('/api/class/random')
+    await res.json().then((data)=>{
+      setClassList([data])
       setLoading(false)
       setTrigger(true)
     })
@@ -279,7 +290,14 @@ export default function Search({ isLargeScreen }: { isLargeScreen: boolean }){
       
 
       {/* 按钮 */}
-      {loading ? <Button className="mt-4 mx-10 rounded-lg shadow-lg transition-all" variant="default" disabled><Loader2 className="mr-2 h-5 w-5 animate-spin" />查询中...</Button>:<div className='flex flex-row w-full justify-center px-6'><Button className="mt-4 rounded-lg shadow-lg transition-all grow" variant="default" onClick={fetchClass}>查询</Button><Button className='mt-4 ml-2' variant="secondary" onClick={()=>setInputValue({name:'',week:'',time:'',teacher:'',place:'',category:'',school:'',tsk:'',engrade:''})}><RotateCcw/></Button></div>}
+      {loading ? <Button className="mt-4 mx-10 rounded-lg shadow-lg transition-all" variant="default" disabled><Loader2 className="mr-2 h-5 w-5 animate-spin" />查询中...</Button>:
+      <div className='flex flex-row w-full justify-center px-6'>
+        <Button className="mt-4 rounded-lg shadow-lg transition-all grow" variant="default" onClick={fetchClass}>查询</Button>
+        <Button className='mt-4 ml-2' variant="secondary" onClick={()=>setInputValue({name:'',week:'',time:'',teacher:'',place:'',category:'',school:'',tsk:'',engrade:''})}><RotateCcw/></Button>
+        {/* 随便看看 */}
+        <div className="mt-6 ml-2 text-sm cursor-pointer text-sky-800 dark:text-sky-200 hover:underline" onClick={getRandom}
+        >随便看看</div>
+      </div>}
       
 
       {/* 数据展示 */}
