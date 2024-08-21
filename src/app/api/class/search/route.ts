@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function POST(request: Request) {
-  const {name,week,time,teacher,place,category,school,tsk,engrade,cursorNum} = await request.json()
+  const {name = "",week = "",time = "",teacher = "",place = " ",category = "",school = "",tsk = "",engrade = "",cursorNum = 1} = await request.json()
   // 从数据库中查找，所有查询参数都有可能是空字符串
   const result = await prisma.course.findMany({
     take: 10,

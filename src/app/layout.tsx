@@ -39,7 +39,7 @@ export default function RootLayout({
           <BackTop />
         </ThemeProvider>
       </body>
-      <Script defer src="https://monitor.wjsphy.top/script.js" data-website-id="d28f9b38-7464-4f2d-b66c-dbef389d728c" data-do-not-track="true"></Script>
+      <Script defer src="https://monitor.wjsphy.top/script.js" data-website-id="3a357e01-4fa0-4c60-ac78-1dbcb0acf6e7" data-do-not-track="true"></Script>
     </html>
   )
 }

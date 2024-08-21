@@ -2,7 +2,7 @@ import { getClient } from '@umami/api-client';
 
 export default async function Dashboard(){
   const client = getClient();
-  const siteID = 'd28f9b38-7464-4f2d-b66c-dbef389d728c';
+  const siteID = '3a357e01-4fa0-4c60-ac78-1dbcb0acf6e7';
   const nowActive = await client.getWebsiteActive(siteID).then(res => res.data) || {'x': 'error'}
   const dayVisit = await client.getWebsiteStats(siteID,{
     // 使用时间戳
@@ -26,21 +26,24 @@ export default async function Dashboard(){
     <div className='grid grid-cols-3 space-x-4 mx-4 mb-4'>
       <div>
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {dayVisit?.uniques.value}
+          {/* @ts-ignore */}
+          {dayVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
         <p className='text-center text-[12px]'>最近24h</p>
       </div>
       <div>
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {weekVisit?.uniques.value}
+          {/* @ts-ignore */}
+          {weekVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
         <p className='text-center text-[12px]'>最近7天</p>
       </div>
       <div >
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {monthVisit?.uniques.value}
+          {/* @ts-ignore */}
+          {monthVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
         <p className='text-center text-[12px]'>最近30天</p>
