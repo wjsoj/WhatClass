@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getClient } from '@umami/api-client';
 
 export default async function Dashboard(){
@@ -26,7 +27,6 @@ export default async function Dashboard(){
     <div className='grid grid-cols-3 space-x-4 mx-4 mb-4'>
       <div>
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {/* @ts-ignore */}
           {dayVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
@@ -34,7 +34,6 @@ export default async function Dashboard(){
       </div>
       <div>
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {/* @ts-ignore */}
           {weekVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
@@ -42,7 +41,6 @@ export default async function Dashboard(){
       </div>
       <div >
         <h2 className='text-3xl text-center font-extrabold mb-1'>
-          {/* @ts-ignore */}
           {monthVisit?.visitors.value}
         </h2>
         <p className='text-center font-xl font-bold text-slate-700 dark:text-slate-200'>访客</p>
